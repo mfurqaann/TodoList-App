@@ -1,9 +1,8 @@
 <div class="container">
-  <div class="text-center">TODO LIST APP</div>
   <form class="form-container" (ngSubmit)="onSubmit()" #f="ngForm">
     <div class="d-flex justify-content-center">
       <input
-        class="col-md-6 form-control"
+        class="form-add-todolist"
         type="text"
         name="addInput"
         placeholder="Add New Task"
@@ -15,33 +14,28 @@
   </form>
 
   <div class="content-container">
+    <div *ngIf="countTodolists === 0">
+      <div class="empty-todo-list">You don't have a todo list, Create One!</div>
+    </div>
+
     <div class="content" *ngFor="let todoList of todoLists; let i = index">
       <div [ngClass]="{ done: todoList.isDone }">{{ todoList.addInput }}</div>
       <div>
-        <button class="btn btn-success mr-1" (click)="onDoneTodolist(i)">
+        <button
+          class="button-success mr-1"
+          [disabled]="todoList.isDone"
+          (click)="onDoneTodolist(i)"
+        >
           Done
         </button>
-        <a (click)="onEdit(i)">
-          <button class="btn btn-warning mr-1">Edit</button>
-        </a>
-        <button class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+        <button class="button-danger" (click)="onDelete(i)">Delete</button>
       </div>
     </div>
 
-    <ng-container *ngIf="isEdit">
-      <form class="form-container" #editForm="ngForm">
-        <div class="d-flex justify-content-center">
-          <input
-            class="col-md-6 form-control"
-            type="text"
-            name="editInput"
-            placeholder="Add New Task"
-            ngModel
-            required
-          />
-          <button class="btn btn-primary" (click)="onSaveEdit()">Edit</button>
-        </div>
-      </form>
-    </ng-container>
+    <div *ngIf="countTodolists > 0">
+      <button (click)="onClearTodolist()" class="button-primary">
+        Clear All
+      </button>
+    </div>
   </div>
 </div>

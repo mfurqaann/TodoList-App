@@ -30,6 +30,10 @@ export class TodoListComponent implements OnInit {
     this.todoLists = this.todoListService.getTodoLists();
   }
 
+  get countTodolists() {
+    return this.todoLists.length;
+  }
+
   onSubmit() {
     if (!this.addForm.valid) {
       return;
@@ -42,21 +46,14 @@ export class TodoListComponent implements OnInit {
     this.todoLists.splice(id, 1);
   }
 
-  onEdit(id: number) {
-    this.isEdit = true;
-    this.todoListId.next(id);
-  }
-
-  onSaveEdit() {
-    // this.todoListId.subscribe((x) => {
-    //   console.log(x);
-    // });
-  }
-
   onDoneTodolist(index: number) {
     this.todoLists[index] = {
       ...this.todoLists[index],
       isDone: !this.todoLists[index].isDone,
     };
+  }
+
+  onClearTodolist() {
+    this.todoLists = [];
   }
 }

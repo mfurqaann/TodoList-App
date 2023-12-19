@@ -1,0 +1,14 @@
+.container-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+
+    background-color: grey;
+
+    .content-text {
+        color: white;
+    }
+
+    margin-bottom: 30px;
+}
