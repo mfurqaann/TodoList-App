@@ -1,0 +1,26 @@
+<div class="container">
+  <div>TODO LIST APP</div>
+  <form class="form-container" (ngSubmit)="onSubmit()" #f="ngForm">
+    <input class="col-md-6 form-control" type="text" name="addInput" ngModel />
+    <button class="btn btn-primary">Add</button>
+
+    <ng-container *ngIf="todoLists">
+      <div
+        class="custom-control custom-checkbox"
+        *ngFor="let todoList of todoLists; let i = index"
+      >
+        <input
+          type="checkbox"
+          class="custom-control-input"
+          [id]="i"
+          name="checkboxInput"
+          ngModel
+          (click)="onClickCheckbox(i)"
+        />
+        <label class="custom-control-label" [for]="i">{{
+          todoList.addInput
+        }}</label>
+      </div>
+    </ng-container>
+  </form>
+</div>
