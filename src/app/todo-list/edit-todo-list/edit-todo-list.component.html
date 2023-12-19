@@ -1,0 +1,13 @@
+<form class="form-container" #f="ngForm">
+  <div class="d-flex justify-content-center">
+    <input
+      class="col-md-6 form-control"
+      type="text"
+      name="addInput"
+      placeholder="Add New Task"
+      ngModel
+      required
+    />
+    <button class="btn btn-primary" (click)="onEdit()">Edit</button>
+  </div>
+</form>

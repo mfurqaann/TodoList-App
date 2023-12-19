@@ -1,26 +1,47 @@
 <div class="container">
-  <div>TODO LIST APP</div>
+  <div class="text-center">TODO LIST APP</div>
   <form class="form-container" (ngSubmit)="onSubmit()" #f="ngForm">
-    <input class="col-md-6 form-control" type="text" name="addInput" ngModel />
-    <button class="btn btn-primary">Add</button>
-
-    <ng-container *ngIf="todoLists">
-      <div
-        class="custom-control custom-checkbox"
-        *ngFor="let todoList of todoLists; let i = index"
-      >
-        <input
-          type="checkbox"
-          class="custom-control-input"
-          [id]="i"
-          name="checkboxInput"
-          ngModel
-          (click)="onClickCheckbox(i)"
-        />
-        <label class="custom-control-label" [for]="i">{{
-          todoList.addInput
-        }}</label>
-      </div>
-    </ng-container>
+    <div class="d-flex justify-content-center">
+      <input
+        class="col-md-6 form-control"
+        type="text"
+        name="addInput"
+        placeholder="Add New Task"
+        ngModel
+        required
+      />
+      <button class="btn btn-primary">Add</button>
+    </div>
   </form>
+
+  <div class="content-container">
+    <div class="content" *ngFor="let todoList of todoLists; let i = index">
+      <div [ngClass]="{ done: todoList.isDone }">{{ todoList.addInput }}</div>
+      <div>
+        <button class="btn btn-success mr-1" (click)="onDoneTodolist(i)">
+          Done
+        </button>
+        <a (click)="onEdit(i)">
+          <button class="btn btn-warning mr-1">Edit</button>
+        </a>
+        <button class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+      </div>
+    </div>
+
+    <ng-container *ngIf="isEdit">
+      <form class="form-container" #editForm="ngForm">
+        <div class="d-flex justify-content-center">
+          <input
+            class="col-md-6 form-control"
+            type="text"
+            name="editInput"
+            placeholder="Add New Task"
+            ngModel
+            required
+          />
+          <button class="btn btn-primary" (click)="onSaveEdit()">Edit</button>
+        </div>
+      </form>
+    </ng-container>
+  </div>
 </div>

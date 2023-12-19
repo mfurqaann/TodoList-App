@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodoListModule } from './todo-list/todo-list.module';
 import { CommonModule } from '@angular/common';
+import { NavHeaderComponent } from './nav-header/nav-header.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NavHeaderComponent],
   imports: [AppRoutingModule, BrowserModule, TodoListModule],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,27 @@
+$grey-light: rgba(237, 231, 225, 0.5) ;
+
+
+.container {
+    width: 700px;
+}
+
+
+.content-container {
+
+    margin-top: 20px;
+
+    .content {
+        padding: 15px;
+        display: flex;
+        border-radius: 10px;
+        justify-content: space-between;
+        background: $grey-light;
+        align-items: center;
+        margin-bottom: 10px;
+
+        .done {
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+    }
+}
