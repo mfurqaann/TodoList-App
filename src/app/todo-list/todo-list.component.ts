@@ -1,14 +1,8 @@
-import {
-  Component,
-  EventEmitter,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+
 import { TodoListModel } from './shared/todo-list.model';
 import { TodoListService } from './shared/todo-list.service';
-import { Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-todo-list',
@@ -19,10 +13,8 @@ export class TodoListComponent implements OnInit {
   todoLists: Array<TodoListModel>;
   isSubmitted: boolean = false;
   isEdit: boolean = false;
-  todoListId = new Subject();
 
   @ViewChild('f') addForm: NgForm;
-  @ViewChild('editForm') editForm: NgForm;
 
   constructor(private todoListService: TodoListService) {}
 
@@ -38,12 +30,20 @@ export class TodoListComponent implements OnInit {
     if (!this.addForm.valid) {
       return;
     }
-    this.todoLists = [...this.todoLists, this.addForm.value];
+
+    const newTodoList = {
+      addInput: this.addForm.value.addInput,
+      isDone: false,
+    };
+
+    this.todoListService.setTodoLists(newTodoList);
+    this.todoLists = this.todoListService.getTodoLists();
+
     this.addForm.reset();
   }
 
   onDelete(id: number) {
-    this.todoLists.splice(id, 1);
+    this.todoListService.deleteTodoList(id);
   }
 
   onDoneTodolist(index: number) {
@@ -54,6 +54,7 @@ export class TodoListComponent implements OnInit {
   }
 
   onClearTodolist() {
-    this.todoLists = [];
+    this.todoLists.splice(0, this.todoLists.length);
+    this.todoListService.clearAllTodoLists();
   }
 }

@@ -28,7 +28,10 @@
         >
           Done
         </button>
-        <button class="button-danger" (click)="onDelete(i)">Delete</button>
+        <a [routerLink]="['edit', i]" class="mr-1">
+          <button class="button-primary">Edit</button>
+        </a>
+        <button class="button-danger mr-1" (click)="onDelete(i)">Delete</button>
       </div>
     </div>
 
@@ -38,4 +41,5 @@
       </button>
     </div>
   </div>
+  <router-outlet></router-outlet>
 </div>
