@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+$grey-light: rgba(237, 231, 225, 0.5);
+$background-success: rgba(22, 160, 133);
+$background-danger: #dc3545;
+$border-danger: #dc3545;
+$background-primary: rgba(4, 59, 92);
+
+button {
+    color: #fff;
+    font-weight: 400;
+    border-radius: 0.25rem !important;
+    border: none;
+    padding: 5px 15px;
+
+    &:disabled {
+        background-color: grey !important;
+    }
+
+    &.button-success {
+        background-color: $background-success;
+    }
+
+    &.button-danger {
+        background-color: $background-danger;
+        border-color: $border-danger;
+    }
+
+    &.button-primary {
+        background-color: $background-primary;
+    }
+}
