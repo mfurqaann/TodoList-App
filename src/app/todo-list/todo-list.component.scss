@@ -1,10 +1,3 @@
-$grey-light: rgba(237, 231, 225, 0.5) ;
-$background-success: rgba(22, 160, 133);
-$background-danger: #dc3545;
-$border-danger: #dc3545;
-$background-primary: rgba(4, 59, 92);
-
-
 .container {
     width: 700px;
 
@@ -27,45 +20,5 @@ $background-primary: rgba(4, 59, 92);
             text-align: center;
             font-size: 14px;
         }
-    
-        .content {
-            padding: 15px;
-            display: flex;
-            border-radius: 10px;
-            justify-content: space-between;
-            background: $grey-light;
-            align-items: center;
-            margin-bottom: 10px;
-    
-            .done {
-                text-decoration: line-through;
-                opacity: 0.5;
-            }
-        }
-    }
-
-    button {
-        color: #fff;
-        font-weight: 400;
-        border-radius: 0.25rem;
-        border: none;
-        padding: 5px 15px;
-
-        &:disabled {
-            background-color: grey;
-        }
-    }
-
-    .button-success {
-        background-color: $background-success;
-    }
-    .button-danger {
-        background-color: $background-danger;
-        border-color: $border-danger;
-    }
-    .button-primary {
-        background-color: $background-primary;
     }
 }
-
-

@@ -1,15 +1,15 @@
 <div class="container">
-  <form class="form-container" (ngSubmit)="onSubmit()" #f="ngForm">
+  <form class="form-container">
     <div class="d-flex justify-content-center">
       <input
         class="form-add-todolist"
         type="text"
         name="addInput"
         placeholder="Add New Task"
-        ngModel
+        [(ngModel)]="addInput"
         required
       />
-      <button class="btn btn-primary">Add</button>
+      <button class="btn btn-primary" (click)="onSubmit()">Add</button>
     </div>
   </form>
 
@@ -18,22 +18,7 @@
       <div class="empty-todo-list">You don't have a todo list, Create One!</div>
     </div>
 
-    <div class="content" *ngFor="let todoList of todoLists; let i = index">
-      <div [ngClass]="{ done: todoList.isDone }">{{ todoList.addInput }}</div>
-      <div>
-        <button
-          class="button-success mr-1"
-          [disabled]="todoList.isDone"
-          (click)="onDoneTodolist(i)"
-        >
-          Done
-        </button>
-        <a [routerLink]="['edit', i]" class="mr-1">
-          <button class="button-primary">Edit</button>
-        </a>
-        <button class="button-danger mr-1" (click)="onDelete(i)">Delete</button>
-      </div>
-    </div>
+    <app-todo-list-item [todoLists]="todoLists"></app-todo-list-item>
 
     <div *ngIf="countTodolists > 0">
       <button (click)="onClearTodolist()" class="button-primary">
@@ -41,5 +26,6 @@
       </button>
     </div>
   </div>
+
   <router-outlet></router-outlet>
 </div>

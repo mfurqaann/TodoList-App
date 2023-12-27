@@ -1,0 +1,16 @@
+$grey-light: rgba(237, 231, 225, 0.5);
+
+.content {
+    padding: 15px;
+    display: flex;
+    border-radius: 10px;
+    justify-content: space-between;
+    background: $grey-light;
+    align-items: center;
+    margin-bottom: 10px;
+
+    .done {
+        text-decoration: line-through;
+        opacity: 0.5;
+    }
+}

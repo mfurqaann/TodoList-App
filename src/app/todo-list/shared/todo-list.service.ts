@@ -27,7 +27,6 @@ export class TodoListService {
 
   deleteTodoList(id: number) {
     this.todoLists.splice(id, 1);
-    console.log(id);
   }
 
   clearAllTodoLists() {

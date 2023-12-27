@@ -1,0 +1,77 @@
+<div class="content" *ngFor="let todoList of todoLists; let i = index">
+  <div [ngClass]="{ done: todoList.isDone }">{{ todoList.addInput }}</div>
+  <div>
+    <button
+      class="button-success mr-1"
+      [disabled]="todoList.isDone"
+      (click)="onDoneTodolist(i)"
+    >
+      Done
+    </button>
+    <button
+      class="button-primary mr-1"
+      data-toggle="modal"
+      data-target="#exampleModal"
+      (click)="onEdit(i)"
+    >
+      Edit
+    </button>
+    <button class="button-danger mr-1" (click)="onDelete(i)">Delete</button>
+
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Edit Todo List Urutan ke {{ indexOrder + 1 }}
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div *ngIf="todoLists[i]">
+              <div class="d-flex justify-content-center">
+                <input
+                  class="col-md-6 form-control"
+                  type="text"
+                  name="addInput"
+                  placeholder="Edit Task"
+                  [(ngModel)]="editTaskValue"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              class="btn btn-primary"
+              data-dismiss="modal"
+              (click)="onSubmitEdit()"
+            >
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
