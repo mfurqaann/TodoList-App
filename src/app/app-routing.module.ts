@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TodoListComponent } from './todo-list/todo-list.component';
-import { EditTodoListComponent } from './todo-list/edit-todo-list/edit-todo-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
@@ -9,7 +8,6 @@ const routes: Routes = [
   {
     path: 'todo-list',
     component: TodoListComponent,
-    children: [{ path: 'edit/:id', component: EditTodoListComponent }],
   },
   { path: 'not-found', component: NotFoundComponent },
 
